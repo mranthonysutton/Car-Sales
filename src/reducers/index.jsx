@@ -18,7 +18,6 @@ export const initialState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_FEATURE":
-      console.log(state.car.features);
       // Checks if the feature is already added to the car. If so, just returns state, or not, adds the feature
       if (state.car.features.includes(action.payload)) {
         return state;
@@ -31,6 +30,18 @@ export const reducer = (state, action) => {
           }
         };
       }
+
+    case "REMOVE_FEATURE":
+      //   console.log("removed", action.payload);
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(
+            vehicle => vehicle.id !== action.payload.id
+          )
+        }
+      };
 
     default:
       return state;
