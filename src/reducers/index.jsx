@@ -1,4 +1,4 @@
-export const Reducer = (state, action) => {
+export const reducer = (state, action) => {
   console.log("Reducer Fired: ", action);
   switch (action.type) {
     default:
