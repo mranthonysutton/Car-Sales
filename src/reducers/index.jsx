@@ -19,10 +19,18 @@ export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_FEATURE":
       console.log(state.car.features);
-      return {
-        ...state,
-        car: { ...state.car, features: [...state.car.features, action.payload] }
-      };
+      // Checks if the feature is already added to the car. If so, just returns state, or not, adds the feature
+      if (state.car.features.includes(action.payload)) {
+        return state;
+      } else {
+        return {
+          ...state,
+          car: {
+            ...state.car,
+            features: [...state.car.features, action.payload]
+          }
+        };
+      }
 
     default:
       return state;
