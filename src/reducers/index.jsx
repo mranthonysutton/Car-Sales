@@ -1,11 +1,3 @@
-export const reducer = (state, action) => {
-  console.log("Reducer Fired: ", action);
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
 export const initialState = {
   additionalPrice: 0,
   car: {
@@ -21,4 +13,17 @@ export const initialState = {
     { id: 3, name: "Premium sound system", price: 500 },
     { id: 4, name: "Rear spoiler", price: 250 }
   ]
+};
+
+export const reducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_FEATURE":
+      return {
+        ...state,
+        car: { ...state.car, features: [...state.car.features, action.payload] }
+      };
+
+    default:
+      return state;
+  }
 };
