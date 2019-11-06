@@ -43,6 +43,12 @@ export const reducer = (state, action) => {
         }
       };
 
+    case "ADD_TOTAL":
+      return {
+        ...state,
+        additionalPrice: state.additionalPrice + action.payload
+      };
+
     default:
       return state;
   }

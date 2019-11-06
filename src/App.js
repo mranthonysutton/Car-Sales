@@ -5,18 +5,20 @@ import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
-import { addFeature, removeFeature } from "./actions";
+import { addFeature, removeFeature, addTotal } from "./actions";
 
 const App = props => {
   const removeFeature = item => {
     // dispatch an action here to remove an item
     props.removeFeature(item);
+    props.addTotal(-item.price);
   };
 
   const buyItem = item => {
     // dipsatch an action here to add an item
     props.addFeature(item);
     // console.log(item);
+    props.addTotal(item.price);
   };
 
   return (
@@ -46,5 +48,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addFeature, removeFeature }
+  { addFeature, removeFeature, addTotal }
 )(App);
